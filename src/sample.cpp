@@ -10,9 +10,9 @@ int main()
 	/// DialogueNode; the ones used here are kept simple for example purposes.
 	///
 	///	NOTE:	Dialogue should really be read in from a file, and not manually emplaced in code.
-	///			This DialogueTree is filled manually here for example purposes, but in reality
-	///			this structure would be filled after parsing another file containing the data
-	///			itself, such as an XML document.
+	///		This DialogueTree is filled manually here for example purposes, but in reality
+	///		this structure would be filled after parsing another file containing the data
+	///		itself, such as an XML document.
 	tree.addDialogueNode(1, "This is test node 1.");
 	tree.addDialogueNode(2, "This is test node 2.");
 	tree.addDialogueNode(3, "This is test node 3.");
