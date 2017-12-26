@@ -1,6 +1,6 @@
 #include "DialogueTree.h"
 #include <iostream>
-
+ 
 int main()
 {
 	/// The DialogueTree instance itself requires no parameters.
