@@ -19,24 +19,27 @@ int main()
 
 	/// Add DialogueOptions to each DialogueNode. DialogueOptions can point to another
 	/// DialogueNode or to nullptr (which would indicate the dialogue has ended).
-	tree.getDialogueNodeWithID(1)->addDialogueOption("An option from node 1. Select this to go to node 2.", tree.getDialogueNodeWithID(2));
-	tree.getDialogueNodeWithID(1)->addDialogueOption("An option from node 1. Select this to go to node 3.", tree.getDialogueNodeWithID(3));
-	tree.getDialogueNodeWithID(1)->addDialogueOption("An option from node 1. Select this to exit.", nullptr);
+	tree.getDialogueNodeWithID(1)->addDialogueOption("An option in node 1. Select to go to node 2.", tree.getDialogueNodeWithID(2));
+	tree.getDialogueNodeWithID(1)->addDialogueOption("An option in node 1. Select to go to node 3.", tree.getDialogueNodeWithID(3));
+	tree.getDialogueNodeWithID(1)->addDialogueOption("An option in node 1. Select to exit.", nullptr);
 
-	tree.getDialogueNodeWithID(2)->addDialogueOption("An option from node 2. Select this to go to node 1.", tree.getDialogueNodeWithID(1));
-	tree.getDialogueNodeWithID(2)->addDialogueOption("An option from node 2. Select this to go to node 3.", tree.getDialogueNodeWithID(3));
-	tree.getDialogueNodeWithID(2)->addDialogueOption("An option from node 2. Select this to exit.", nullptr);
+	tree.getDialogueNodeWithID(2)->addDialogueOption("An option in node 2. Select to go to node 1.", tree.getDialogueNodeWithID(1));
+	tree.getDialogueNodeWithID(2)->addDialogueOption("An option in node 2. Select to go to node 3.", tree.getDialogueNodeWithID(3));
+	tree.getDialogueNodeWithID(2)->addDialogueOption("An option in node 2. Select to exit.", nullptr);
 
-	tree.getDialogueNodeWithID(3)->addDialogueOption("An option from node 3. Select this to go to node 1.", tree.getDialogueNodeWithID(1));
-	tree.getDialogueNodeWithID(3)->addDialogueOption("An option from node 3. Select this to go to node 2.", tree.getDialogueNodeWithID(2));
-	tree.getDialogueNodeWithID(3)->addDialogueOption("An option from node 3. Select this to exit.", nullptr);
+	tree.getDialogueNodeWithID(3)->addDialogueOption("An option in node 3. Select to go to node 1.", tree.getDialogueNodeWithID(1));
+	tree.getDialogueNodeWithID(3)->addDialogueOption("An option in node 3. Select to go to node 2.", tree.getDialogueNodeWithID(2));
+	tree.getDialogueNodeWithID(3)->addDialogueOption("An option in node 3. Select to exit.", nullptr);
 
 	/// Note that we can supply an optional integer argument to serve as a flag
 	/// associated with selecting this option. This argument will default to 0, which
 	/// indicates nothing additional for selecting this option, but any integer can be
 	/// supplied and later used for additional processing. An example of this will be
 	/// implemented in this program.
-	tree.getDialogueNodeWithID(3)->addDialogueOption("Select this to go to node 1 and remove node 3 from the tree.", tree.getDialogueNodeWithID(1), 1);
+	tree.getDialogueNodeWithID(3)->addDialogueOption(
+		"Select to go to node 1 and remove node 3 from the tree.",
+		tree.getDialogueNodeWithID(1),
+		1);
 
 	/// Create a DialogueNode to serve as the node being viewed currently. In most cases
 	/// this will start at the first DialogueNode in the tree, but any DialogueNode can
@@ -88,7 +91,7 @@ int main()
 				///
 				/// This behavior is not automatically handled in DialogueTree::removeDialogueNode() because
 				/// the aftermath of removing DialogueNodes may vary based on the design of your program.
-				for (auto it = tree.getDialogueNodes().begin(); it != tree.getDialogueNodes().end(); ++it) //iterate through each DialogueNode
+				for (auto it = tree.getDialogueNodes().begin(); it != tree.getDialogueNodes().end(); ++it)
 				{
 					/// Since the DialogueNode we want to remove is still in the vector of DialogueNodes,
 					/// we check to make sure we ignore the one we want to remove.
@@ -109,7 +112,9 @@ int main()
 								/// We could simply leave this DialogueNode with one less DialogueOption,
 								/// and there would be no issues. To show that DialogueOptions are easily
 								/// replaceable, we will add a new one to take place of the previous one.
-								tree.getDialogueNodeWithID((*it)->getID())->addDialogueOption("A new option! Select this to exit.", nullptr);
+								tree.getDialogueNodeWithID((*it)->getID())->addDialogueOption(
+									"A new option! Select this to exit.",
+									nullptr);
 							} //end if
 						} //end for
 					} //end if
