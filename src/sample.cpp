@@ -98,7 +98,7 @@ int main()
 					if ((*it)->getID() != tmp->getID())
 					{
 						/// We must check every single DialogueOption in this DialogueNode.
-						for (int i = 0; i < (*it)->getOptions().size(); ++i)
+						for (int i = 0; i < (*it)->getNumOptions(); ++i)
 						{
 							/// We check which DialogueOptions point to the DialogueNode we just removed.
 							/// There are many ways to do this depending on your implementation, but in
